@@ -1,0 +1,341 @@
+You are a world-class frontend developer specializing in premium, conversion-optimized
+
+websites for real businesses.
+
+​
+
+YOUR MISSION
+
+Build a complete, production-ready website from the PRD attached below. The final result
+
+MUST look like it was built by a top-tier design agency — NOT a generic template,
+
+NOT a bootstrap site, NOT a basic landing page. Every section must feel intentional,
+
+polished, and high-end.
+
+​
+
+─────────────────────────────────
+
+DESIGN SYSTEM — Follow These Exactly
+
+─────────────────────────────────
+
+​
+
+Color Philosophy
+
+- NEVER use default CSS colors (red, blue, green) or generic hex values (#333, #007bff)
+
+- Use the brand palette from the PRD with strong contrast and visual harmony
+
+- Backgrounds: warm off-whites (#fafaf8, #f5f5f0, #e3e1e2) — NEVER pure white
+
+- Use foreground/70 and foreground/80 opacity for secondary text hierarchy
+
+​
+
+Typography
+
+- Import TWO fonts from Google Fonts:
+
+    Headings: a serif font (Playfair Display, DM Serif Display, Lora, Cormorant Garamond)
+
+    Body: a clean sans-serif (DM Sans, Inter, or Outfit)
+
+- Hero headline: text-7xl on desktop, text-5xl on mobile
+
+- Small uppercase labels: tracking-wide or tracking-[0.3em]
+
+- Headlines: use text-balance to prevent awkward line breaks
+
+- Subtext: always text-muted-foreground, never the same weight as headings
+
+​
+
+Spacing & Shapes
+
+- ALL cards, containers, image wrappers: border-radius 20-24px (rounded-3xl)
+
+- NO sharp corners anywhere on the site
+
+- Section padding: py-24 (96px vertical)
+
+- Content max-width: max-w-7xl with px-6 lg:px-8
+
+- Generous whitespace between every element
+
+​
+
+Shadows — Use this multi-layered shadow on all cards, navbar, and floating elements:
+
+​
+
+  box-shadow:
+
+    rgba(14, 63, 126, 0.04) 0px 0px 0px 1px,
+
+    rgba(42, 51, 69,  0.04) 0px 1px 1px -0.5px,
+
+    rgba(42, 51, 70,  0.04) 0px 3px 3px -1.5px,
+
+    rgba(42, 51, 70,  0.04) 0px 6px 6px -3px,
+
+    rgba(14, 63, 126, 0.04) 0px 12px 12px -6px,
+
+    rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
+
+​
+
+- Do NOT use shadow-lg or shadow-xl — the layered approach is far more refined
+
+​
+
+─────────────────────────────────
+
+ANIMATION SYSTEM
+
+─────────────────────────────────
+
+​
+
+Scroll-Triggered Reveals (IntersectionObserver)
+
+- Cards and images: opacity-0 scale-95 → opacity-100 scale-100
+
+- Duration: 700ms, timing: ease-out
+
+- Stagger each card by 80ms (0ms, 80ms, 160ms...)
+
+- Threshold: 0.1
+
+​
+
+Text Blur-In — apply to all section headings:
+
+​
+
+  @keyframes blur-in {
+
+    0%   { filter: blur(12px); opacity: 0; transform: translateY(8px); }
+
+    100% { filter: blur(0);    opacity: 1; transform: translateY(0);   }
+
+  }
+
+  .animate-blur-in { animation: blur-in 0.8s ease-out forwards; }
+
+​
+
+  Stagger animation-delay: label 0.2s, headline 0.4s, subtext 0.6s
+
+  Elements start opacity-0 and only animate when scrolled into view
+
+​
+
+Hover Micro-Interactions
+
+- Cards: hover:scale-[1.02] with 300ms transition
+
+- Buttons with arrows: group-hover:translate-x-1 on the arrow
+
+- Quick-add buttons: opacity-0 translate-y-2 → group-hover:opacity-100 translate-y-0
+
+- All interactive elements: transition-all duration-300 ease-out
+
+​
+
+─────────────────────────────────
+
+COMPONENT BLUEPRINTS
+
+─────────────────────────────────
+
+​
+
+Navbar
+
+- fixed top-0, floating with margin from edges, height 68px
+
+- Background: backdrop-blur-md with bg-[rgba(255,255,255,0.4)]
+
+- Border: border-[rgba(255,255,255,0.32)]
+
+- Layout: nav links LEFT, logo CENTERED (absolute positioned), icons RIGHT
+
+- Mobile: hamburger menu, max-h-0 → max-h-64 slide-down transition
+
+- Entry: scale + fade in on page load
+
+​
+
+Hero Section
+
+- min-h-screen with flex items-center
+
+- Background: full-bleed image or video covering the entire viewport
+
+- Overlay: bg-gradient-to-t from-background via-background/50 to-transparent (60% height)
+
+- Content: uppercase label → large serif headline → paragraph → rounded-full CTA button
+
+- Bottom center: "Scroll" text + animated vertical line with animate-pulse
+
+- All text uses blur-in animation with staggered delays
+
+​
+
+Feature Section (Bento Grid)
+
+- Desktop: grid-cols-4 grid-rows-[300px_300px]
+
+- 1 large block (col-span-2 row-span-2): video or image + white overlay card at bottom
+
+- 2 smaller blocks: background image + text overlay; background video + icon content
+
+- Below grid: two-column — large video/image (aspect-[4/5]) + header + 2x2 feature cards
+
+- Feature cards: icon in rounded circle, title, description, hover scale
+
+​
+
+Product/Service Grid
+
+- Category filter: pill segmented control — rounded-full bg-background p-1
+
+- Active tab: animated sliding background div via CSS transition-all duration-300
+
+- Grid: grid-cols-4 desktop / grid-cols-2 mobile
+
+- Cards: rounded-3xl, aspect-square image, badge in top-left, hover-reveal add button
+
+- Category switch: fade out → swap → fade in (300ms crossfade)
+
+​
+
+Testimonials
+
+- 3-column desktop, single column mobile | h-[600px] overflow-hidden
+
+- Auto-scroll CSS keyframes:
+
+    scroll-down: translateY(0) → translateY(-50%), 30s infinite linear
+
+    scroll-up:   translateY(-50%) → translateY(0), 30s infinite linear
+
+    Column 1 & 3: down | Column 2: up | Hover: slow to 60s
+
+- Duplicate the cards array (spread twice) for seamless loop
+
+- Cards: rounded-3xl p-6 bg-white, serif quote, author + city, service badge
+
+- Gradient masks top and bottom: h-32, from-background to-transparent
+
+​
+
+CTA Banner
+
+- rounded-3xl, min-h-[400px], full background image
+
+- Large headline + 3 icon+text value propositions
+
+- Scroll-triggered scale animation
+
+​
+
+Newsletter / Lead Capture
+
+- Full-width, brand primary color background
+
+- Large serif heading, descriptive subtext
+
+- Form: backdrop-blur-sm input, rounded-full shape, submit button
+
+- Success state: swap form for check icon + welcome message
+
+​
+
+Footer
+
+- Giant brand name watermark: text-[200px] md:text-[400px], opacity 0.1-0.2,
+
+  positioned at bottom behind all content
+
+- 4-column grid: brand info + social icon circles, then 3 link columns
+
+- Social icons: rounded-full bg-background, hover color transition
+
+- Bottom bar: copyright + policy links, separated by border-t
+
+​
+
+─────────────────────────────────
+
+TECHNICAL REQUIREMENTS
+
+─────────────────────────────────
+
+​
+
+- Framework: Pure Javascript (one-page scripts only, dont use export and so on)
+
+- Styling: Tailwind CSS | Icons: Lucide React
+
+- Animations: pure CSS + IntersectionObserver only (no Framer Motion, no GSAP, no AOS)
+
+- Images: Unsplash URLs or high-quality placeholder images
+
+- Each section = its own component file in /components/[brand-name]/
+
+- Shared state (e.g. cart) via React Context
+
+- Mobile-first: everything must look great on small screens
+
+- Semantic HTML: section, nav, main, footer, h1-h3 hierarchy
+
+- Accessibility: aria-labels on all interactive elements
+
+​
+
+─────────────────────────────────
+
+FINAL CHECKLIST
+
+─────────────────────────────────
+
+​
+
+[ ] Navbar floats with glassmorphism — not a basic sticky header
+
+[ ] Hero fills viewport with background media and gradient fade
+
+[ ] Every section animates on scroll — no section simply appears
+
+[ ] Text uses blur-in animation, not basic fade
+
+[ ] Cards use multi-layered shadows, not flat or default shadows
+
+[ ] Testimonials auto-scroll in alternating directions
+
+[ ] Product filter uses animated sliding background, not color swap
+
+[ ] Footer has giant watermark text behind navigation links
+
+[ ] All corners rounded-3xl — zero sharp edges
+
+[ ] Works beautifully on mobile
+
+​
+
+Build EVERY section from the PRD below. Do not skip anything.
+
+Do not simplify. Premium quality only.
+
+​
+
+─────────────────────────────────
+
+​
+
+[PASTE YOUR GENERATED PRD HERE]

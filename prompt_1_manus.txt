@@ -1,0 +1,28 @@
+Generate a detailed Product Requirements Document (PRD) for a professional website for this bussiness:
+
+Google Maps: [paste google maps link here]
+
+Research the bussiness from the link above - find their name, type, location, services/products, photos, reviews, and any existing online presence
+
+Then generate a complete PRD with the following:
+
+## Brand Identity
+- Brand personality and visual tone
+- Color palette(primary, secondary, accent - hex codes)
+- Typhography: serif heading font + sans-serif body font
+
+
+## Homepage Sections (write exact copy for each)
+1. Hero – Benefit-driven headline (max 8 words), subheadline, CTA button text, background visual description
+2. Trust Badges – 4 badges (icon + title + one-line description)
+3. Features / About (Bento Grid) – 3-4 feature cards + 1 large visual block with overlay card
+4. Products/Services Grid – 8-12 items (name, description, price, category, badge)
+5. Testimonials – 9 reviews (name, city, rating, quote, service used)
+6. CTA Banner – Headline + 3 value props with icons
+7. Newsletter – Headline, subtext, email form
+8. Footer – Brand tagline, nav columns (Shop, About, Support), social links
+
+## Additional Pages
+- Full shop/services page with category filters
+
+Output in clean markdown.
